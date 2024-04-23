@@ -1,0 +1,17 @@
+%{
+#include<stdio.h>
+
+#include<string.h>
+
+%}
+
+%%
+[A][a-zA-Z]+ {if(strlen(yytext)==3) printf("%s\n",yytext);}
+. {;}
+%%
+
+int yywrap(){return 1;}
+int main(){
+    yylex();
+    return 0;
+}

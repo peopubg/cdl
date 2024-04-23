@@ -1,0 +1,22 @@
+%{
+int lc=0,sc=0,wc=0,tc=0,ch=0,c=0;    
+%}
+%%
+\n {lc++;}
+([ ])+ {sc++;}
+\t {tc++;}
+. {ch++;c++;}
+[a-zA-Z0-9]+ {wc++;c+=yyleng;}
+
+%%
+int yywrap(){}
+int main(){
+    yylex();
+    printf("lines:%d",lc);
+    printf("spaces:%d",sc);
+    printf("tabs:%d",tc);
+    printf("char:%d %d",c,ch);
+    printf("words:%d",wc+ch);
+
+
+}

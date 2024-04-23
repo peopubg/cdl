@@ -1,0 +1,16 @@
+%{
+
+int int_cnt=0,float_cnt=0;    
+    
+%}
+%%
+[0-9]+"."[0-9]+ {ECHO;printf("\nDecimal Number \n");float_cnt++;}
+[0-9]+ {ECHO;printf("\n Integer Number\n");int_cnt++;}
+
+%%
+int yywrap(){return 1;}
+int main(){
+    yylex();
+    printf("no of Decimal Numbers:%d\n no of Integers:%d\n",float_cnt,int_cnt);
+    return 0;
+}
